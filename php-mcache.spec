@@ -6,15 +6,13 @@
 Summary:	A PHP extension providing access to memcached caching servers
 Name:		php-%{modname}
 Version:	1.2.0
-Release:	%mkrel 0.beta10.5
+Release:	%mkrel 0.beta10.6
 Group:		Development/PHP
 License:	PHP License
 URL:		http://www.klir.com/~johnm/php-mcache/
 Source0:	http://www.klir.com/~johnm/php-mcache/php-%{modname}-ext-%{version}-beta10.tar.bz2
 BuildRequires:	php-devel >= 3:5.2.0
 BuildRequires:	libmemcache-devel >= 1.4.0
-Provides:	php5-mcache
-Obsoletes:	php5-mcache
 Epoch:		2
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
@@ -45,6 +43,15 @@ enhancements made to the underlying library.
 %setup -q -n php-%{modname}-ext-%{version}-beta10
 
 %build
+export CFLAGS="%{optflags}"
+export CXXFLAGS="%{optflags}"
+export FFLAGS="%{optflags}"
+
+%if %mdkversion >= 200710
+export CFLAGS="$CFLAGS -fstack-protector"
+export CXXFLAGS="$CXXFLAGS -fstack-protector"
+export FFLAGS="$FFLAGS -fstack-protector"
+%endif
 
 #%{_usrsrc}/php-devel/buildext mcache "mcache.c" \
 #    "-lmemcache" "-DCOMPILE_DL_MCACHE"
@@ -81,5 +88,3 @@ EOF
 %doc README* CREDITS index.html mcache.php
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/php.d/%{inifile}
 %attr(0755,root,root) %{_libdir}/php/extensions/%{soname}
-
-
