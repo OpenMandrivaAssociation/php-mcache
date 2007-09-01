@@ -6,7 +6,7 @@
 Summary:	A PHP extension providing access to memcached caching servers
 Name:		php-%{modname}
 Version:	1.2.0
-Release:	%mkrel 0.beta10.6
+Release:	%mkrel 0.beta10.7
 Group:		Development/PHP
 License:	PHP License
 URL:		http://www.klir.com/~johnm/php-mcache/
@@ -43,15 +43,7 @@ enhancements made to the underlying library.
 %setup -q -n php-%{modname}-ext-%{version}-beta10
 
 %build
-export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags}"
-export FFLAGS="%{optflags}"
-
-%if %mdkversion >= 200710
-export CFLAGS="$CFLAGS -fstack-protector"
-export CXXFLAGS="$CXXFLAGS -fstack-protector"
-export FFLAGS="$FFLAGS -fstack-protector"
-%endif
+%serverbuild
 
 #%{_usrsrc}/php-devel/buildext mcache "mcache.c" \
 #    "-lmemcache" "-DCOMPILE_DL_MCACHE"
