@@ -6,7 +6,7 @@
 Summary:	A PHP extension providing access to memcached caching servers
 Name:		php-%{modname}
 Version:	1.2.0
-Release:	%mkrel 0.beta10.7
+Release:	%mkrel 0.beta10.8
 Group:		Development/PHP
 License:	PHP License
 URL:		http://www.klir.com/~johnm/php-mcache/
@@ -70,6 +70,18 @@ EOF
 cat > %{buildroot}%{_sysconfdir}/php.d/%{inifile} << EOF
 extension = %{soname}
 EOF
+
+%post
+if [ -f /var/lock/subsys/httpd ]; then
+    %{_initrddir}/httpd restart >/dev/null || :
+fi
+
+%postun
+if [ "$1" = "0" ]; then
+    if [ -f /var/lock/subsys/httpd ]; then
+	%{_initrddir}/httpd restart >/dev/null || :
+    fi
+fi
 
 %clean
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
