@@ -14,7 +14,6 @@ Source0:	http://www.klir.com/~johnm/php-mcache/php-%{modname}-ext-%{version}-bet
 BuildRequires:	php-devel >= 3:5.2.0
 BuildRequires:	libmemcache-devel >= 1.4.0
 Epoch:		2
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 mcache is a PHP extension that aims to enable developers to easily and
