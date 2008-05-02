@@ -6,7 +6,7 @@
 Summary:	A PHP extension providing access to memcached caching servers
 Name:		php-%{modname}
 Version:	1.2.0
-Release:	%mkrel 0.beta10.9
+Release:	%mkrel 0.beta10.10
 Group:		Development/PHP
 License:	PHP License
 URL:		http://www.klir.com/~johnm/php-mcache/
@@ -14,7 +14,7 @@ Source0:	http://www.klir.com/~johnm/php-mcache/php-%{modname}-ext-%{version}-bet
 BuildRequires:	php-devel >= 3:5.2.0
 BuildRequires:	libmemcache-devel >= 1.4.0
 Epoch:		2
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 mcache is a PHP extension that aims to enable developers to easily and
