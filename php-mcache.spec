@@ -9,7 +9,7 @@ Version:	1.2.0
 Release:	%mkrel 0.beta10.30
 Group:		Development/PHP
 License:	PHP License
-URL:		http://www.klir.com/~johnm/php-mcache/
+URL:		https://www.klir.com/~johnm/php-mcache/
 Source0:	http://www.klir.com/~johnm/php-mcache/php-%{modname}-ext-%{version}-beta10.tar.bz2
 BuildRequires:	php-devel >= 3:5.2.0
 BuildRequires:	libmemcache-devel >= 1.4.0
